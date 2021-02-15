@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import '../Widgets/app_drawer.dart';
+import 'package:provider/provider.dart';
+import '../providers/persons.dart';
 
 class UserPostItem extends StatelessWidget {
+  final String id;
   final String title;
   final String imageUrl;
-  UserPostItem(this.title, this.imageUrl);
+  UserPostItem(this.id, this.title, this.imageUrl);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,7 +25,10 @@ class UserPostItem extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
              IconButton(
-                    icon: Icon(Icons.delete)
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      Provider.of<Persons>(context, listen: false).deletePost(id);
+                    },
              )
           ],
         ),

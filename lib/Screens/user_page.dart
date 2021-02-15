@@ -28,6 +28,7 @@ class UserPage extends StatelessWidget {
           itemBuilder: (_, i) => Column(
             children:[
             UserPostItem(
+              personData.items[i].id,
               personData.items[i].description,
               personData.items[i].imageUrl,
             ),

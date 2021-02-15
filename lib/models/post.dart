@@ -6,7 +6,7 @@ class Post with ChangeNotifier{
   final String id;
   final String username;
   final String description;
-  final DateTime postDate;
+  final String postDate;
   final String imageUrl;
   bool isLiked;
 

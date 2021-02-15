@@ -1,6 +1,6 @@
 import 'package:cet301finalproject/models/post.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+//import 'package:intl/intl.dart';
 import '../Screens/person_detail_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -75,7 +75,7 @@ class PostItem extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                    DateFormat('dd MM yyyy').format(post.postDate)
+                    post.postDate
                 ),
               )
             ],
