@@ -1,8 +1,6 @@
-import 'package:cet301finalproject/Screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:cet301finalproject/Screens/posts_overview_screen.dart';
+import './Screens/home_screen.dart';
 import './Screens/person_detail_screen.dart';
 import './Screens/user_page.dart';
 import './Screens/add_post_screen.dart';
@@ -24,11 +22,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.orange,
           accentColor: Colors.deepOrange
         ),
-        home: PostsOverviewScreen(),
+        home: HomeScreen(),
         routes: {
           PersonDetailScreen.routeName: (ctx) => PersonDetailScreen(),
           UserPage.routeName: (ctx) => UserPage(),
-          PostsOverviewScreen.routeName: (ctx) => PostsOverviewScreen(),
           AddPostScreen.routeName: (ctx) => AddPostScreen()
         },
       ),

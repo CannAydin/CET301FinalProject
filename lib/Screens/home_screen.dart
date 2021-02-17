@@ -1,18 +1,35 @@
 import 'package:flutter/material.dart';
+import '../Widgets/posts_grid.dart';
+import '../Widgets/app_drawer.dart';
+import 'package:provider/provider.dart';
+import '../providers/persons.dart';
 
-class homescreen extends StatelessWidget {
+
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  var _isInit = true;
+
+  @override
+  void didChangeDependencies() {
+    if(_isInit) {
+      Provider.of<Persons>(context).getPostsFromServer();
+    }
+    _isInit = false;
+    super.didChangeDependencies();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: 15,
-        itemBuilder: (ctc, index) => Container(
-          padding: EdgeInsets.all(8),
-          child: (Text('This is work')
-          ),
+        appBar: AppBar(
+          title:
+          Text('Just Like It'),
         ),
-      ),
+        drawer: AppDrawer(),
+        body: PostsGrid()
     );
-
   }
 }

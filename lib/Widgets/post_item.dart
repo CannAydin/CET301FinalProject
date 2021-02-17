@@ -1,6 +1,5 @@
 import 'package:cet301finalproject/models/post.dart';
 import 'package:flutter/material.dart';
-//import 'package:intl/intl.dart';
 import '../Screens/person_detail_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -8,7 +7,7 @@ class PostItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final post = Provider.of<Post>(context);
+    //final post = Provider.of<Post>(context);
     return Consumer<Post>(
       builder: (ctx, post, child) => Column(
         children: [
@@ -80,6 +79,7 @@ class PostItem extends StatelessWidget {
               )
             ],
           ),
+          Divider(thickness: 2),
         ],
       ),
     );

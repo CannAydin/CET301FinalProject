@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import '../models/post.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 /* ChangeNotifier
   Allows us to establish behind the scenes communication tunnels with the help of the
   context object which we're getting in every widget.
@@ -10,7 +13,7 @@ class Persons with ChangeNotifier {
   // klasımda kullanıyorum...
   // with birden fazla klasın özelliklerini çekmemi sağlayabilir.
     List<Post> _items = [
-      Post(
+      /*Post(
         id: 'p1',
         username: 'test1',
         description: 'Istanbul',
@@ -65,7 +68,7 @@ class Persons with ChangeNotifier {
           postDate: '11 05 2010',
           imageUrl:
           'https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/08/Red-Pagoda-in-Fujiyoshida-Japan.jpg'
-      ),
+      ),*/
     ];
 
     List<Post> get items {
@@ -76,16 +79,52 @@ class Persons with ChangeNotifier {
       return _items.firstWhere((element) => element.id == id);
     }
 
+    Future<void> getPostsFromServer() async {
+      const url = 'https://cet301-374cc-default-rtdb.firebaseio.com/posts.json';
+      try{
+        final response = await http.get(url);
+        //print(jsonDecode(response.body));
+        final pulledData = json.decode(response.body) as Map<String, dynamic>;
+        final List<Post>loadedPosts = [];
+        pulledData.forEach((postId, postValue) {
+          loadedPosts.add(Post(
+            id: postId,
+            username: postValue['username'],
+            description: postValue['description'],
+            imageUrl: postValue['imageUrl'],
+            isLiked: postValue['isLiked'],
+            postDate: postValue['postDate']
+          ));
+        });
+        _items = loadedPosts;
+        notifyListeners();
+      } catch (error) {
+        throw (error);
+      }
+
+    }
+
     void addPost(Post post) {
-      final newPost = Post(
-          username: 'test1',
-          description: post.description,
-          postDate: DateTime.now().toString(),
-          imageUrl: post.imageUrl,
-          id : DateTime.now().toString()
-      );
-      _items.add(newPost);
-      notifyListeners();
+      const url = 'https://cet301-374cc-default-rtdb.firebaseio.com/posts.json';
+      http.post(url, body: json.encode({
+        'username' : post.username,
+        'description' : post.description,
+        'imageUrl' : post.imageUrl,
+        'isLiked' : post.isLiked,
+        'postDate' : DateTime.now().toString(),
+      }),
+      ).then((response) {
+        final newPost = Post(
+            username: 'test1',
+            description: post.description,
+            postDate: DateTime.now().toString(),
+            imageUrl: post.imageUrl,
+            id : DateTime.now().toString()
+        );
+        _items.add(newPost);
+        notifyListeners();
+      });
+
     }
 
     void deletePost(String id) {
