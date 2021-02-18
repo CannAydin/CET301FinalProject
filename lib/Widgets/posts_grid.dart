@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/persons.dart';
+import '../providers/posts.dart';
 import './post_item.dart';
 
 class PostsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final personsData = Provider.of<Persons>(context);
+    final personsData = Provider.of<Posts>(context);
     final posts = personsData.items;
     return GridView.builder(
       padding: const EdgeInsets.fromLTRB(0, 10, 0, 50),

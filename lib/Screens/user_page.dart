@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/persons.dart';
+import '../providers/posts.dart';
 import '../Widgets/user_post_item.dart';
 import '../Widgets/app_drawer.dart';
 import '../Screens/add_post_screen.dart';
@@ -9,7 +9,7 @@ class UserPage extends StatelessWidget {
   static const routeName = '/UserPage';
   @override
   Widget build(BuildContext context) {
-    final personData = Provider.of<Persons>(context);
+    final personData = Provider.of<Posts>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profil'),

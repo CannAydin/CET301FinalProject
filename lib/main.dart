@@ -4,7 +4,7 @@ import './Screens/home_screen.dart';
 import './Screens/person_detail_screen.dart';
 import './Screens/user_page.dart';
 import './Screens/add_post_screen.dart';
-import './providers/persons.dart';
+import './providers/posts.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (ctx) => Persons(),
+      create: (ctx) => Posts(),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

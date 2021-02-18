@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/persons.dart';
+import '../providers/posts.dart';
 
 class PersonDetailScreen extends StatelessWidget {
   //final String title;
@@ -11,11 +11,11 @@ class PersonDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final personId = ModalRoute.of(context).settings.arguments as String;
-    final thePosts = Provider.of<Persons>(
+    final postId = ModalRoute.of(context).settings.arguments as String;
+    final thePosts = Provider.of<Posts>(
         context,
         listen: false,
-    ).findById(personId);
+    ).findById(postId);
     return Scaffold(
       appBar: AppBar(
         title: Text(thePosts.username),

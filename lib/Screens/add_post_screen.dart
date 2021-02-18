@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/post.dart';
-import '../providers/persons.dart';
+import '../providers/posts.dart';
 
 class AddPostScreen extends StatefulWidget {
   static const routeName = '/add-post';
@@ -31,7 +31,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     _post.currentState.save();
     /*print(_addedPost.description);
     print(_addedPost.imageUrl);*/
-    Provider.of<Persons>(context, listen: false).addPost(_addedPost);
+    Provider.of<Posts>(context, listen: false).addPost(_addedPost);
     Navigator.of(context).pop();
   }
 

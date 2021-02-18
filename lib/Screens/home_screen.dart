@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../Widgets/posts_grid.dart';
 import '../Widgets/app_drawer.dart';
 import 'package:provider/provider.dart';
-import '../providers/persons.dart';
+import '../providers/posts.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void didChangeDependencies() {
     if(_isInit) {
-      Provider.of<Persons>(context).getPostsFromServer();
+      Provider.of<Posts>(context).getPostsFromServer();
     }
     _isInit = false;
     super.didChangeDependencies();

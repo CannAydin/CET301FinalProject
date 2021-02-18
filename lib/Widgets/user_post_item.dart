@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/persons.dart';
+import '../providers/posts.dart';
 
 class UserPostItem extends StatelessWidget {
   final String id;
@@ -27,18 +27,12 @@ class UserPostItem extends StatelessWidget {
              IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () {
-                      Provider.of<Persons>(context, listen: false).deletePost(id);
+                      Provider.of<Posts>(context, listen: false).deletePost(id);
                     },
              )
           ],
         ),
       ],
     );
-    /*
-    return ListTile(
-      title: Text(title),
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(imageUrl),
-      ),);*/
   }
 }
