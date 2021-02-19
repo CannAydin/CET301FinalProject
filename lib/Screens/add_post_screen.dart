@@ -39,6 +39,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Yeni Post'),
         actions: <Widget>[
           IconButton(
@@ -55,6 +56,19 @@ class _AddPostScreenState extends State<AddPostScreen> {
           key: _post,
           child: ListView(
             children: <Widget> [
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Kullanıcı Adını Giriniz'),
+                textInputAction: TextInputAction.next,
+                onSaved: (value) {
+                  _addedPost = Post(
+                      id: null,
+                      description: _addedPost.description,
+                      username: value,
+                      postDate: _addedPost.postDate,
+                      imageUrl: _addedPost.imageUrl
+                  );
+                },
+              ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Açıklama Giriniz'),
                 textInputAction: TextInputAction.next,

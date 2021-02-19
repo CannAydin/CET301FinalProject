@@ -16,13 +16,8 @@ class PostItem extends StatelessWidget {
             child: FlatButton(
               onPressed: () {
                 Navigator.of(context).pushNamed(
-                  PersonDetailScreen.routeName, arguments: post.id,
+                  PersonDetailScreen.routeName, arguments: post.username,
                 );
-                /*Navigator.of(context).push(
-                  MaterialPageRoute(
-                      builder: (ctx) => PersonDetailScreen.routeName
-                  ),
-              );*/
               },
               child: Text(
                 post.username,
@@ -34,7 +29,6 @@ class PostItem extends StatelessWidget {
                 ),
               ),
             ),
-
           ),
           Image.network(
             post.imageUrl,

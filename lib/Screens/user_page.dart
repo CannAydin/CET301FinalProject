@@ -12,6 +12,7 @@ class UserPage extends StatelessWidget {
     final personData = Provider.of<Posts>(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Profil'),
         actions: <Widget>[
           IconButton(icon: const Icon(Icons.add), onPressed: (){
