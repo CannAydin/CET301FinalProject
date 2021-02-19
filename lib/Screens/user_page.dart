@@ -13,11 +13,10 @@ class UserPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Profil'),
+        title: const Text('Profil', style: TextStyle(fontWeight: FontWeight.bold),),
         actions: <Widget>[
-          IconButton(icon: const Icon(Icons.add), onPressed: (){
+          IconButton(icon: const Icon(Icons.camera_alt), onPressed: (){
             Navigator.of(context).pushNamed(AddPostScreen.routeName);
-            //...
           },),
         ],
       ),

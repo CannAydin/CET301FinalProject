@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           centerTitle: true,
           title:
-          Text('Just Like It'),
+          Text('Just Like It', style: TextStyle(fontWeight: FontWeight.bold) ,),
         ),
         drawer: AppDrawer(),
         body: PostsGrid()

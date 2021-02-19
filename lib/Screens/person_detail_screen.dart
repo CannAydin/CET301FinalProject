@@ -18,7 +18,7 @@ class PersonDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(postUsername, style: TextStyle(),),
+        title: Text(postUsername, style: TextStyle(fontWeight: FontWeight.bold),),
       ),
       body: GridView.builder(
             itemCount: theUsersPosts.length,

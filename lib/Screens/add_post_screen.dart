@@ -40,11 +40,11 @@ class _AddPostScreenState extends State<AddPostScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Yeni Post'),
+        title: Text('Yeni Post', style: TextStyle(fontWeight: FontWeight.bold),),
         actions: <Widget>[
           IconButton(
               icon: Icon(
-                  Icons.done
+                  Icons.done,
               ),
               onPressed: _save,
           )
@@ -88,8 +88,11 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       keyboardType: TextInputType.url,
                       textInputAction: TextInputAction.done,
                       controller: _imageUrlController,
-                      onFieldSubmitted: (_) {
-                        _save();
+                      onEditingComplete: () {
+                        FocusScope.of(context).requestFocus(FocusNode());
+                        setState(() {
+
+                        });
                       },
                       onSaved: (value) {
                         _addedPost = Post(
@@ -105,6 +108,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 Container(
                   width: double.infinity,
                   height: 300,
+                  padding: EdgeInsets.all(0),
                   decoration: BoxDecoration(
                     border: Border.all(
                       width: 1
